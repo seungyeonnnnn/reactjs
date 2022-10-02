@@ -8,45 +8,18 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <script type="text/babel">
     const root = document.querySelector("#root");
-    const Title = () => (
-      <h3 id="title" onMouseEnter={() => console.log("mouse enter")}>
-        Hello I'm a title
-      </h3>
-    );
-    /*     const h3 = React.createElement(
-          "h3",
-          //   { id: "sexy-span", style: { color: "red" } },
-          {
-            onMouseEnter: () => console.log("mouse enter"),
-          },
-          "Hello I'm a span"
-        ); */
-    const Button = () => (
-      // function 정의하고 안에 return하는 것과 동일
-      <button
-        style={{ backgroundColor: "tomato" }}
-        onClick={() => console.log("im clicked")}
-      >
-        Click me
-      </button>
-    );
-    /*     const btn = React.createElement(
-          "button",
-          {
-            onClick: () => console.log("im clicked"),
-            style: {
-              backgroundColor: "tomato",
-            },
-          },
-          "Click me"
-        ); */
-    // const container = React.createElement("div", null, [Title, Button]);
-    const Container = () => (
-      <div>
-        <Title />
-        <Button />
-      </div>
-    );
-    ReactDOM.render(<Container />, root);
+    function App() {
+      const [counter, setCounter] = React.useState(0);
+      const onClick = () => {
+        setCounter(counter + 1);
+      };
+      return (
+        <div>
+          <h3>Total clicks: {counter}</h3>
+          <button onClick={onClick}>Click me</button>
+        </div>
+      );
+    }
+    ReactDOM.render(<App />, root);
   </script>
 </html>
